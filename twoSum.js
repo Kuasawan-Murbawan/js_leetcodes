@@ -5,8 +5,16 @@
 // Output: [0,1]
 // Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
 
-var nums = [2, 7, 11, 15];
+// var nums = [2, 7, 11, 15];
+// var target = 9;
+
+// var nums = [3, 2, 4];
+// var target = 6;
+
+var nums = [3, 3];
 var target = 6;
+
+// ------------ Hash Map (Two Pass) -----------------
 
 var twoSum = function (nums, target) {
   // check if the input is empty
@@ -39,4 +47,41 @@ var twoSum = function (nums, target) {
   return "no solution";
 };
 
-console.log(twoSum(nums, target));
+// console.log(twoSum(nums, target));
+
+// ------------ Hash Map (One Pass) -----------
+
+var twoSum3 = function (nums, target) {
+  let numsList = new Map();
+
+  for (let i = 0; i < nums.length; i++) {
+    let complement = target - nums[i];
+
+    if (numsList.has(complement)) {
+      return [i, numsList.get(complement)];
+    }
+
+    numsList.set(nums[i], i);
+  }
+
+  return [];
+};
+
+// ------------- BRUTE FORCE -----------------
+var twoSum2 = function (nums, target) {
+  let comp = 0;
+  for (let i = 0; i < nums.length - 1; i++) {
+    comp = nums[i] - target;
+    absComp = Math.abs(comp);
+
+    for (let j = i + 1; j < nums.length; j++) {
+      if (nums[j] == absComp) {
+        return [i, j];
+      }
+    }
+  }
+
+  return "no solution";
+};
+
+console.log(twoSum2(nums, target));

@@ -2,9 +2,12 @@
 // The majority element is the element that appears more than `⌊n / 2⌋` times.
 // You may assume that the majority element always exists in the array.
 // Eg → [1,2,3,1,1,2,2,2], return → 2
+// Majority is when the element occurs more than half the time, it is not the highest number of occurence
 
-var arr = [6, 6, 8, 8, 8, 8, 9, 12, 22, 12];
+// var arr = [6, 6, 8, 8, 8, 8, 8, 22, 12];
 // var arr = [6, 8, 8, 8, 80, 6, 6, 80];
+// var arr = [2, 2, 1, 1, 1, 2, 2];
+var arr = [3, 2, 3];
 
 var calculateMajority = function (nums) {
   // store each key with the number of occurences
@@ -52,4 +55,29 @@ var calculateMajority2 = function (nums) {
   return maxKey;
 };
 
-console.log(calculateMajority2(arr));
+var calculateMajorityHashmap = function (nums) {
+  /*
+    1. Iterate each element and store it a map
+    2. count each occurence
+    3. If the occurence is more than size, then return the element
+*/
+
+  let map1 = new Map();
+  let numSize = nums.length;
+
+  for (let i = 0; i < nums.length; i++) {
+    if (map1.has(nums[i])) {
+      let nextCount = map1.get(nums[i]) + 1;
+
+      if (nextCount > numSize / 2) {
+        return nums[i];
+      }
+
+      map1.set(nums[i], nextCount);
+    } else {
+      map1.set(nums[i], 1);
+    }
+  }
+};
+
+console.log(calculateMajorityHashmap(arr));

@@ -7,7 +7,7 @@
 // var arr = [6, 6, 8, 8, 8, 8, 8, 22, 12];
 // var arr = [6, 8, 8, 8, 80, 6, 6, 80];
 // var arr = [2, 2, 1, 1, 1, 2, 2];
-var arr = [3, 2, 3];
+var arr = [7, 3, 3];
 
 var calculateMajority = function (nums) {
   // store each key with the number of occurences
@@ -80,4 +80,31 @@ var calculateMajorityHashmap = function (nums) {
   }
 };
 
-console.log(calculateMajorityHashmap(arr));
+var calculateMajoritySimple = function (nums) {
+  /* --- if majority, it is the most freq in the array ---
+   1. store current element in element
+   2. store count as 0
+   3. Iterate nums as elem
+   4. if elem === element,
+   5. increase the count
+   6. else, decrease the count
+   7. if count is back to 0, swap element with elem
+   8. the most frequent elem will be in element
+   9. return element
+ 
+*/
+  let currentMajorityElement = null;
+  let currentCount = 0;
+
+  for (let elem of nums) {
+    if (currentCount === 0) {
+      currentMajorityElement = elem;
+    }
+
+    currentCount += currentMajorityElement == elem ? 1 : -1;
+  }
+
+  return currentMajorityElement;
+};
+
+console.log(calculateMajoritySimple(arr));

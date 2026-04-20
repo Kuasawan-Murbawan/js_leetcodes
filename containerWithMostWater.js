@@ -5,6 +5,21 @@
      - the height of left n right
      - the distance between left n right
 
+    To store
+    - BiggestSoFar    
+
+    1. Start from left[0], right[maxlength]    
+    2. size = Math.min(heigh[left], height[right]) * (right-left)
+    while(left < right)
+    3. if(size > BiggestSofar)
+    4.  BiggestSoFar = (size)
+    6. else if(size < biggestSofar)
+    7.  if(height[left] < height[right])
+            left++;
+        else
+            right++
+    8.  
+    
 
 
 */

@@ -72,4 +72,4 @@ var palin = function (s) {
   return true;
 };
 
-console.log(palin(str));
+console.log(palin("0P"));

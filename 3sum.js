@@ -63,4 +63,5 @@ var threeSum = function (nums) {
 };
 
 let nums = [-1, 0, 1, 2, -1, -4];
-console.log(threeSum(nums));
+let nums2 = [-2, 0, 1, 1, 2];
+console.log(threeSum(nums2));

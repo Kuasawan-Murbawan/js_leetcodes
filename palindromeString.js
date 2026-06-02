@@ -1,7 +1,7 @@
 //Given a string s, return true if it is a palindrome, or false otherwise.
 
-var str = "race a car";
-// var str = "A man,y a plan, a canal: Panama";
+// var str = "race a car";
+var str = "A man, a plan, a canal: Panama";
 
 var isPalindrome = function (str) {
   cleanedStr = str.toLowerCase();
@@ -72,4 +72,35 @@ var palin = function (s) {
   return true;
 };
 
-console.log(palin("0P"));
+var palinEfficient = function (s) {
+  const isAlphanumeric = (char) => {
+    char = char.toLowerCase();
+    return (char >= "a" && char <= "z") || (char >= "0" && char <= "9");
+  };
+
+  let left = 0;
+  let right = s.length - 1;
+
+  while (left < right) {
+    if (!isAlphanumeric(s[left])) {
+      left++;
+      continue;
+    }
+
+    if (!isAlphanumeric(s[right])) {
+      right--;
+      continue;
+    }
+
+    if (s[left].toLowerCase() !== s[right].toLowerCase()) {
+      return false;
+    }
+
+    left++;
+    right--;
+  }
+
+  return true;
+};
+console.log(palinEfficient(str));
+// console.log(palinEfficient("00"));
